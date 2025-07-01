@@ -1,0 +1,12 @@
+package com.example.demo;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
+public class StudentController {
+	
+	@GetMapping("/info")
+    public String getStudent() {
+        return "Student: Antony";
+    }
+
+}

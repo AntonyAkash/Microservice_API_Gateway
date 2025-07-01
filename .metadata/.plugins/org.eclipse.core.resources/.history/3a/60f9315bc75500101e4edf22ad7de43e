@@ -1,0 +1,16 @@
+package com.example.demo;
+
+import org.springframework.web.bind.annotation.GetMapping;
+package com.example.studentservice.controller;
+
+
+@Restont
+@RequestMapping("/student")
+public class StudentController {
+	
+	@GetMapping("/info")
+    public String getStudent() {
+        return "Student: Antony";
+    }
+
+}

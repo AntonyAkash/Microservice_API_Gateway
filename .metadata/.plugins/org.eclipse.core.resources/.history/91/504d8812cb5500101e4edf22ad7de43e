@@ -1,0 +1,18 @@
+server.port=8080
+spring.application.name=api-gateway
+
+# Eureka client setup
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+
+# Enable gateway discovery
+spring.cloud.discovery.enabled=true
+
+# STUDENT-SERVICE routing
+spring.cloud.gateway.routes[0].id=student-service
+spring.cloud.gateway.routes[0].uri=lb://STUDENT-SERVICE
+spring.cloud.gateway.routes[0].predicates[0]=Path=/student/**
+
+# NAME-SERVICE routing
+spring.cloud.gateway.routes[1].id=name-service
+spring.cloud.gateway.routes[1].uri=lb://NAME-SERVICE
+spring.cloud.gateway.routes[1].predicates[0]=Path=/name/**

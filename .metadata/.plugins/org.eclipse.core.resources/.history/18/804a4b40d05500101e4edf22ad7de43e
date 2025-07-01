@@ -1,0 +1,36 @@
+package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+
+@RestController
+@RequestMapping("/student")
+public class StudentController {
+	
+	 @Autowired
+	 private RestTemplate restTemplate;
+	
+	@GetMapping("/info")
+    public String getStudent() {
+        return "Student: Priyanka";
+    }
+	
+	 @GetMapping("/info/aspiration")
+	    public String getStudentAspiration() {
+	        // Calling NAME-SERVICE via Eureka service name
+	        String name = restTemplate.getForObject("http://NAME-SERVICE/name/aim", String.class);
+	        return "Priyanka is a " + name;
+	    }
+	 
+	 @GetMapping("/info/Balance")
+	    public String getStudentBalance() {
+	        // Calling NAME-SERVICE via Eureka service name
+	        String name = restTemplate.getForObject("http://NAME-SERVICE/name/aim", String.class);
+	        return "Priyanka Balance is a " + name;
+	    }
+
+}
